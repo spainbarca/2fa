@@ -1,10 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-class getIp extends Controller
-{
-
-    public function get_ip(){
+    function get_ip(){
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, "http://httpbin.org/ip");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -37,13 +34,12 @@ class getIp extends Controller
         $username = get_current_user();
 
         return 'IP pública: ' . $PublicIP.
-        '</br> IP local: ' . $ip_visitor.
-        '</br> País: ' . $country.
-        '</br> Departamento: ' . $region.
-        '</br> Ciudad: ' . $city.
-        '</br> Coordenadas: ' . $loc.
-        '</br> Operadora: ' . $org.
-        '</br> MAC: ' . $mac.
-        '</br> Usuario: ' . $username;
+        ' - IP local: ' . $ip_visitor.
+        ' -  País: ' . $country.
+        ' -  Departamento: ' . $region.
+        ' -  Ciudad: ' . $city.
+        ' -  Coordenadas: ' . $loc.
+        ' -  Operadora: ' . $org.
+        ' -  MAC: ' . $mac.
+        ' -  Usuario: ' . $username;
     }
-}
