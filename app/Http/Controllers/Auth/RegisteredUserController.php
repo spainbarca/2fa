@@ -43,6 +43,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'country' => $request->country,
+            'phone' => str_replace(['+',' ','-','_'],'',$request->phone),
             'ip' => $_SERVER['REMOTE_ADDR'],
             'visitor' => $get_ip,
         ]);
