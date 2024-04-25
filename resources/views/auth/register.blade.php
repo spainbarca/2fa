@@ -19,8 +19,8 @@
          <!-- Country -->
          <div class="mt-4">
             <x-input-label for="country" :value="__('Country')" />
-            <x-select-input class="select2 block mt-1 w-full" name="country">
-         </x-select-input>
+            <select class="select2 block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" name="country" id="country">
+         </select>
         </div>
 
         <!-- Phone -->
@@ -64,3 +64,24 @@
         </div>
     </form>
 </x-guest-layout>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+
+    var xx = $(document).ready(function() {
+    $.getJSON('../../js/paises.json', function(contenidoDelarchivo ){
+            $.each(contenidoDelarchivo, function(i, item) {
+            console.log(item["dialCode"]);
+            $("#country").append('<option name="' + item["dialCode"] + '">' + item["name"] +' ('+item["dialCode"]+')' + '</option>');
+        });
+        })
+    });
+
+    $(document).ready(function() {
+        $('#country').select2({
+            theme: "classic"
+        });
+    });
+</script>
